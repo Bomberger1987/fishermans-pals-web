@@ -1,0 +1,406 @@
+window.APP_DATA = {
+  meta: {
+    name: "Fisherman's Pals",
+    subtitle: "PvE Hardmode · Langzeitserver",
+    slogan: "Sind sie zu stark, bist du zu schwach.",
+    updated: "20.09.2026"
+  },
+
+  nav: [
+    { id: "home", icon: "⌂", label: "Start" },
+    { id: "rules", icon: "§", label: "Regeln" },
+    { id: "changes", icon: "↻", label: "Änderungen" },
+    { id: "lab", icon: "⚗", label: "Labor" },
+    { id: "pal-locks", icon: "🔒", label: "Pal-Sperren" },
+    { id: "map", icon: "map", label: "Weltkarte" },
+    { id: "elements", icon: "✦", label: "Elemente" },
+    { id: "knowledge", icon: "i", label: "Spielwissen" },
+    { id: "links", icon: "↗", label: "Links" },
+    { id: "server", icon: "◉", label: "Server" },
+    { id: "deaths", icon: "☠", label: "Todesfälle" }
+  ],
+
+  statusEndpoints: [
+    "https://fishermans-pals-status.onrender.com/api/status",
+    "https://fishermans-pals-status.onrender.com/status.json",
+    "https://fishermans-pals-status.onrender.com/"
+  ],
+
+  deathFeedEndpoint: "https://fishermans-pals-status.onrender.com/api/public/deaths",
+
+  mapProgression: [
+    { color: "#E6E7EA", step: "Start", cap: "Cap 8", boss: "Start", unlock: "Ihr startet mit Cap 8. Arbeitet euch von dort zu Zoe & Grizzbolt vor." },
+    { color: "#FF9AA5", step: "Schritt 1", cap: "Cap 18", boss: "Zoe & Grizzbolt", unlock: "Nach Zoe & Grizzbolt steigt euer Cap auf 18. Damit sind die Gebiete der 18er-Stufe freigeschaltet." },
+    { color: "#FF3B33", step: "Schritt 2", cap: "Cap 28", boss: "Lily & Lyleen", unlock: "Nach Lily & Lyleen steigt euer Cap auf 28. Damit sind die Gebiete der 28er-Stufe freigeschaltet." },
+    { color: "#FF9B1C", step: "Schritt 3", cap: "Cap 35", boss: "Axel & Orserk", unlock: "Nach Axel & Orserk steigt euer Cap auf 35. Damit sind die Gebiete der 35er-Stufe freigeschaltet." },
+    { color: "#F0DB20", step: "Schritt 4", cap: "Cap 38", boss: "Bellanoir [RAID]", unlock: "Nach Bellanoir steigt euer Cap auf 38. Damit sind die Gebiete der 38er-Stufe freigeschaltet." },
+    { color: "#9AE514", step: "Schritt 5", cap: "Cap 45", boss: "Marcus & Faleris", unlock: "Nach Marcus & Faleris steigt euer Cap auf 45. Damit sind die Gebiete der 45er-Stufe freigeschaltet." },
+    { color: "#19D864", step: "Schritt 6", cap: "Cap 48", boss: "Bellanoir Libero [RAID]", unlock: "Nach Bellanoir Libero steigt euer Cap auf 48. Damit sind die Gebiete der 48er-Stufe freigeschaltet." },
+    { color: "#2EDBF3", step: "Schritt 7", cap: "Cap 50", boss: "Victor & Shadowbeak", unlock: "Nach Victor & Shadowbeak steigt euer Cap auf 50. Damit sind die Gebiete der 50er-Stufe freigeschaltet." },
+    { color: "#4DBBFF", step: "Schritt 8", cap: "Cap 53", boss: "Moon Lord [RAID]", unlock: "Nach Moon Lord steigt euer Cap auf 53. Damit sind die Gebiete der 53er-Stufe freigeschaltet." },
+    { color: "#288CFF", step: "Schritt 9", cap: "Cap 55", boss: "Saya & Selyne", unlock: "Nach Saya & Selyne steigt euer Cap auf 55. Damit sind die Gebiete der 55er-Stufe freigeschaltet." },
+    { color: "#3550FF", step: "Schritt 10", cap: "Cap 58", boss: "Blazamut Ryu [RAID]", unlock: "Nach Blazamut Ryu steigt euer Cap auf 58. Damit sind die Gebiete der 58er-Stufe freigeschaltet." },
+    { color: "#8B4CFF", step: "Schritt 11", cap: "Cap 65", boss: "Bjorn & Bastigor", unlock: "Nach Bjorn & Bastigor steigt euer Cap auf 65. Damit sind die Gebiete der 65er-Stufe freigeschaltet." },
+    { color: "#FF35F5", step: "Schritt 12", cap: "Cap 66", boss: "Xenolord [RAID]", unlock: "Nach Xenolord steigt euer Cap auf 66. Damit sind die Gebiete der 66er-Stufe freigeschaltet." },
+    { color: "#FF30B8", step: "Schritt 13", cap: "Cap 70", boss: "Auri & Shaolong", unlock: "Nach Auri & Shaolong steigt euer Cap auf 70. Damit sind die Gebiete der 70er-Stufe freigeschaltet." },
+    { color: "#E48EFF", step: "Schritt 14", cap: "Cap 78", boss: "Hartalis [RAID]", unlock: "Nach Hartalis steigt euer Cap auf 78. Damit sind die Gebiete der 78er-Stufe freigeschaltet." },
+    { color: "#F4F4F4", step: "Finale", cap: "Cap aufgehoben", boss: "Zenara & Astralyn", unlock: "Nach Zenara & Astralyn ist das Cap aufgehoben (bis Level 80). Damit ist die letzte Progressionsstufe komplett offen." }
+  ],
+
+  rulesIntro: "Damit Fisherman’s Pals langfristig fair, stabil und für alle angenehm spielbar bleibt, gelten auf unserem Server einige grundlegende Regeln. Mit dem Spielen auf dem Server erklärt ihr euch mit diesen Regeln einverstanden.",
+
+  rules: [
+    { category: "Allgemein", title: "1. Discord-Name = Ingame-Name", text: "Euer Discord-Name muss eindeutig eurem Ingame-Namen entsprechen. Die Namen müssen nicht zwingend Zeichen für Zeichen identisch sein, müssen für das Admin-Team aber eindeutig zugeordnet werden können. Spieler, die nicht eindeutig identifiziert werden können, können aufgefordert werden, ihren Discord-Namen entsprechend anzupassen.", important: false },
+    { category: "Miteinander", title: "2. Respektvoller Umgang", text: "Behandelt andere Spieler so, wie ihr selbst behandelt werden möchtet. Beleidigungen, gezielte Provokationen, Belästigungen, diskriminierende Inhalte oder dauerhaft toxisches Verhalten haben auf Fisherman’s Pals keinen Platz. Probleme mit anderen Spielern bitte nicht öffentlich eskalieren, sondern dem Admin-Team melden.", important: true },
+    { category: "Bauen", title: "3. Abstand zu fremden Basen", text: "Beim Bau einer neuen Basis ist auf bereits bestehende Basen anderer Spieler oder Gilden angemessen Rücksicht zu nehmen. Baut nicht absichtlich direkt an fremde Basen heran und blockiert keine natürlichen Erweiterungsmöglichkeiten, Ressourcen oder Zugänge. Es gibt bewusst keinen pauschalen Mindestabstand in Metern. Hier gilt: Respektiert den Platz anderer Spieler. Sollte es zu Streitigkeiten kommen, entscheidet im Zweifelsfall das Admin-Team.", important: false },
+    { category: "Bauen", title: "4. Startgebiet freihalten", text: "Das komplette Startgebiet muss für neue Spieler frei zugänglich bleiben. Vom Spawnpunkt bis einschließlich zur ersten Ruine beziehungsweise Lifmunk-Statue darf keine permanente Basis errichtet werden. Neue Spieler sollen den Server betreten können, ohne direkt zwischen Gebäuden, Mauern oder großen Basen zu spawnen. Auch Wege und wichtige Zugänge in diesem Bereich dürfen nicht blockiert werden.", important: true },
+    { category: "Bauen", title: "5. Mega-Basen nur nach Absprache", text: "Sehr große Bauprojekte beziehungsweise Mega-Basen müssen vor dem Bau mit dem Admin-Team abgesprochen werden. Dabei geht es nicht darum, kreatives Bauen zu verhindern. Große Basen können jedoch erhebliche Auswirkungen auf die Serverperformance haben. Wenn ihr etwas außergewöhnlich Großes bauen möchtet, sprecht uns vorher an. Gemeinsam finden wir normalerweise eine Lösung.", important: false },
+    { category: "Server", title: "6. Serverperformance nicht absichtlich belasten", text: "Unterlasst das Verlassen und erneute Betreten des Servers, um bestimmte Effekte auszunutzen. Ebenso ist Spam-Joinen während eines Serverneustarts zu unterlassen, da der Server nach einem Neustart für etwa 6 Minuten gesperrt ist.", important: true },
+    { category: "Exploits", title: "7. Keine Glitches, Exploits oder Bugs ausnutzen", text: "Das absichtliche Ausnutzen von Bugs, Glitches oder unbeabsichtigten Spielmechaniken ist untersagt. Dazu gehören unter anderem Ölförderer auf Skill Trees oder anderen dafür nicht vorgesehenen Objekten, Hangyu-Glitches oder vergleichbare Bewegungs-/Mechanik-Exploits, Volcanic-Rain-/Skill-Glitches, das Duplizieren von Items, Pals, Ressourcen oder Währungen, das Umgehen unseres Level-, Zonen-, Fang- oder Progressionssystems sowie das Ausnutzen von Fehlern in unseren eigenen Mods. Diese Liste ist nur eine Auswahl. Nur weil ein Exploit nicht ausdrücklich aufgeführt ist, bedeutet das nicht, dass er erlaubt ist. Wenn ihr euch bei einer Mechanik nicht sicher seid, fragt vorher das Admin-Team.", important: true },
+    { category: "Progression", title: "8. Jegliches Pushen von Spielern ist untersagt", text: "Unser Server besitzt bewusst ein eigenes Progressionssystem. Deshalb ist jegliches gezielte Pushen eines anderen Spielers untersagt – auch innerhalb derselben Gilde. Dazu gehören insbesondere hochlevelige Pals für niedrigstufige Spieler, Endgame- oder deutlich zu starke Ausrüstung, hochwertige Sphären oder Progressionsgegenstände zum Überspringen von Stufen, gezieltes Durchziehen durch Tower oder Raids sowie Materialien oder Ausrüstung in Mengen, durch die große Teile der Progression übersprungen werden. Das gilt auch für Freunde, Familienmitglieder und Mitglieder derselben Gilde. Normales gemeinsames Spielen ist erlaubt. Der entscheidende Unterschied ist: Zusammen spielen = erlaubt. Progression für einen anderen Spieler überspringen = nicht erlaubt.", important: true },
+    { category: "Progression", title: "9. Progressionssystem nicht umgehen", text: "Unser Level-, Zonen-, Tower-, Raid- und Fangsystem ist ein zentraler Bestandteil von Fisherman’s Pals. Versuche, diese Systeme absichtlich zu umgehen, gelten als Regelverstoß. Solltet ihr durch einen Bug unbeabsichtigt Zugang zu einem Gebiet, Pal, Gegenstand oder Fortschritt erhalten, der euch eigentlich noch nicht zusteht, meldet dies bitte dem Admin-Team. Ein gemeldeter Fehler ist kein Problem. Das bewusste weitere Ausnutzen eines bekannten Fehlers dagegen schon.", important: true },
+    { category: "Bauen", title: "10. Keine Spawn-, Boss- oder wichtigen Zugänge blockieren", text: "Basen oder Gebäude dürfen keine wichtigen Bereiche dauerhaft blockieren. Dazu gehören insbesondere Spieler-Spawns, wichtige Schnellreisepunkte, Dungeon-Eingänge, Tower-Zugänge, Raid-/Bossbereiche, wichtige Wege, besondere Serverbereiche und benötigte Ressourcenpunkte. Wenn ihr euch unsicher seid, ob ein Bauplatz problematisch sein könnte, fragt vorher nach.", important: true },
+    { category: "Bauen", title: "11. Keine absichtlichen Gebietsblockaden", text: "Es ist nicht erlaubt, große Gebiete nur deshalb mit Fundamenten, einzelnen Bauteilen oder anderen Konstruktionen zu belegen, damit andere Spieler dort nicht bauen oder spielen können. Ungenutzte Geisterbasen zum Reservieren eines Bauspots werden entfernt. Bauten, die nur vorübergehend genutzt werden, sind anschließend abzureißen. Beansprucht den Platz, den ihr tatsächlich benötigt.", important: false },
+    { category: "Handel", title: "12. Handel ist erlaubt – Progressionsskip nicht", text: "Handel zwischen Spielern und Gilden ist grundsätzlich erlaubt und ausdrücklich Bestandteil eines PvE-Servers. Allerdings darf Handel nicht dazu benutzt werden, das Progressionssystem zu umgehen. Normale Ressourcen, passende Ausrüstung oder gleichwertige Gegenstände zu handeln ist kein Problem. Einem neuen Spieler komplette Endgame-Ausrüstung, High-Level-Pals und sämtliche benötigten Materialien zu geben, damit er mehrere Progressionsstufen überspringt, fällt dagegen unter Pushen.", important: true },
+    { category: "Bugs", title: "13. Bugs bitte melden", text: "Wenn ihr einen Fehler in Palworld oder einem unserer eigenen Systeme entdeckt, meldet ihn bitte. Das gilt insbesondere bei Fehlern mit Items, Pals, Fangmechaniken, Towern, Raids, Gebietsgrenzen, Händlern, Belohnungen, Basen oder Währungen. Grundsatz: Melden statt ausnutzen. Spieler werden nicht dafür bestraft, dass sie einen Fehler entdecken und melden.", important: false },
+    { category: "Administration", title: "14. Entscheidungen des Admin-Teams", text: "Nicht jede denkbare Situation kann in einem Regelwerk vollständig vorhergesehen werden. Das Admin-Team kann deshalb auch bei Verhaltensweisen eingreifen, die offensichtlich dem Sinn unseres Servers oder einem fairen Miteinander widersprechen, selbst wenn der konkrete Fall nicht wortwörtlich in den Regeln steht. Dabei versuchen wir immer, Entscheidungen nachvollziehbar und verhältnismäßig zu treffen. Je nach Schwere eines Verstoßes können Maßnahmen von einer Verwarnung bis zum dauerhaften Ausschluss vom Server reichen.", important: false }
+  ],
+
+  rulesOutro: "Unsere Regeln sollen euch nicht unnötig einschränken. Sie sollen dafür sorgen, dass unser Langzeit-PvE- und Progressionskonzept funktioniert, der Server stabil bleibt und neue wie erfahrene Spieler die gleichen fairen Voraussetzungen haben. Spielt gemeinsam. Helft euch gegenseitig. Baut, kämpft und züchtet zusammen – aber lasst jedem Spieler seine eigene Progression. Und wenn eine Mechanik offensichtlich zu schön ist, um beabsichtigt zu sein: Fragt lieber einmal nach, bevor ihr sie ausnutzt.",
+
+  changes: {
+    chapters: [
+      {
+        id: "base",
+        kicker: "BASE & GILDE",
+        title: "Base, Gilde & Breeding",
+        intro: "Die wichtigsten Base-Regeln und Gildenlimits auf Fisherman's Pals. Technische Serverdetails bleiben bewusst außen vor.",
+        facts: [
+          { label: "Basen", value: "2 pro Gilde", detail: "Maximal zwei Basen je Gilde." },
+          { label: "Base-Pals", value: "20 pro Base", detail: "Maximal 20 arbeitende Pals pro Base." },
+          { label: "Gildengröße", value: "3 Spieler", detail: "Maximal drei Spieler je Gilde." },
+          { label: "Ei-Brutzeit", value: "48 Stunden", detail: "Server-Grundwert für die normale Ei-Brutzeit." },
+          { label: "Arbeitsgeschwindigkeit", value: "×0,50", detail: "Die allgemeine Base-Arbeitsgeschwindigkeit ist auf 50 % gesetzt." }
+        ],
+        groups: [
+          {
+            title: "Bau-Limits der Gilde",
+            text: "Diese Limits gelten gildenweit über alle Basen zusammen.",
+            rows: [
+              {
+                label: "Brutkästen",
+                value: "25 normal ODER 5 Multi",
+                detail: "Entweder maximal 25 normale Brutkästen oder maximal 5 Multi-Brutkästen. Beide Gruppen dürfen nicht miteinander kombiniert werden.",
+                important: true
+              },
+              { label: "Ancient Hatchery", value: "1× zusätzlich", detail: "Die letzte Breeding-Station darf zusätzlich zu den normalen oder Multi-Brutkästen 1× gebaut werden." },
+              { label: "Fischfarmen", value: "1 normal + 1 groß", detail: "Eine normale und eine große Fischfarm dürfen gleichzeitig gebaut werden." },
+              { label: "Labor", value: "2×", detail: "Maximal zwei Labore pro Gilde." },
+              { label: "Expeditionsstation", value: "1×", detail: "Maximal eine Expeditionsstation pro Gilde." },
+              { label: "Item Booth", value: "1×", detail: "Maximal ein Item Booth pro Gilde." },
+              { label: "Pal Booth", value: "1×", detail: "Maximal ein Pal Booth pro Gilde." }
+            ]
+          },
+          {
+            title: "Base-Pals & Offline-Basen",
+            text: "Auch der Einsatz und die Versorgung der Base-Pals sind serverseitig angepasst.",
+            rows: [
+              {
+                label: "Pal-Freischaltungen",
+                value: "Levelgebunden",
+                detail: "Bestimmte Pals können erst ab einem festgelegten Spielerlevel in Base und Party eingesetzt werden.",
+                action: { tab: "pal-locks", label: "Pal-Sperren ansehen" }
+              },
+              { label: "Sättigungsziel", value: "ca. 95 %", detail: "Base-Pals fressen bis ungefähr 95 % Sättigung." },
+              { label: "Offline-Stasis", value: "Hunger + GEI geschützt", detail: "Ist die Gilde offline, werden Hunger und GEI der Base-Pals geschützt." },
+              { label: "Freigabe nach Rückkehr", value: "60 Sekunden", detail: "Nach der Rückkehr wird die Base kontrolliert nach 60 Sekunden wieder freigegeben." }
+            ]
+          }
+        ]
+      },
+      {
+        id: "progression",
+        kicker: "PROGRESSION",
+        title: "XP & Pal-Freischaltungen",
+        intro: "Der Fortschritt ist bewusst langsamer als Vanilla und wird zusätzlich über Pal-Freischaltungen gesteuert.",
+        facts: [
+          { label: "Spieler-XP", value: "×0,10", detail: "Normale Spieler-XP werden mit dem Faktor 0,10 berechnet." },
+          { label: "Pal-XP", value: "×0,35", detail: "Pal-XP werden mit dem Faktor 0,35 berechnet." }
+        ],
+        groups: [
+          {
+            title: "Pal-Nutzung",
+            text: "Ausgewählte Pals besitzen eigene Freischaltlevel.",
+            rows: [
+              {
+                label: "Party & Base",
+                value: "individuelle Levelgrenzen",
+                detail: "Die vollständige Liste steht im Reiter Pal-Sperren.",
+                action: { tab: "pal-locks", label: "Liste öffnen" }
+              }
+            ]
+          }
+        ]
+      },
+      {
+        id: "fishing",
+        kicker: "FISHING",
+        title: "Fishing",
+        intro: "Fishing ist Teil der Langzeitprogression und wird stufenweise freigeschaltet.",
+        facts: [
+          { label: "Beginner", value: "Level 15", detail: "" },
+          { label: "Intermediate", value: "Level 30", detail: "" },
+          { label: "Advanced", value: "Level 40", detail: "" },
+          { label: "Master", value: "Level 50", detail: "" },
+          { label: "Expert", value: "Level 60", detail: "" },
+          { label: "World Tree", value: "Level 70", detail: "" },
+          { label: "Grandmaster", value: "Level 70", detail: "" }
+        ],
+        groups: [
+          {
+            title: "Fishing-Balance",
+            text: "Das Fishing-Minispiel und die dazugehörige Progression wurden serverseitig härter abgestimmt.",
+            rows: []
+          }
+        ]
+      },
+      {
+        id: "boss",
+        kicker: "BOSS & ENDGAME",
+        title: "Boss, Raid & Weltbaum",
+        intro: "Boss- und Endgame-Inhalte sind für den Langzeit-Hardmode angepasst.",
+        facts: [
+          { label: "Weltbaum-Bosse", value: "90 Minuten", detail: "Cooldown nach dem Sieg." }
+        ],
+        groups: [
+          {
+            title: "Server-Balance",
+            text: "Tower- und Raidbosse besitzen eigene serverseitige Balance-Anpassungen. Auch Teile des Weltbaum-Loots wurden angepasst.",
+            rows: [
+              { label: "Weltbaum-Cooldown", value: "90 Minuten", detail: "Gilt für Rotmist Root, Shinespore Root und Forbidden Laboratory." },
+              { label: "Tower & Raid", value: "angepasst", detail: "Bosswerte werden serverseitig an den Hardmode angepasst." }
+            ]
+          }
+        ]
+      },
+      {
+        id: "economy",
+        kicker: "LOOT & HANDEL",
+        title: "Loot, Händler & Skillbücher",
+        intro: "Einige Lootquellen und Händler wurden an die langsamere Serverprogression angepasst.",
+        facts: [],
+        groups: [
+          {
+            title: "Skillbücher",
+            text: "Kauf und Verkauf sind bewusst getrennt.",
+            rows: [
+              { label: "Kaufen", value: "750 Dogcoins", detail: "Skillbücher kosten beim Medal-Händler 750 Dogcoins." },
+              { label: "Verkaufen", value: "350 Dogcoins", detail: "Skillbücher können nur beim Village-Händler (rote Jacke) für 350 Dogcoins verkauft werden." }
+            ]
+          },
+          {
+            title: "Loot-Balance",
+            text: "Baupläne, Expeditionen, Weltbaum-Drops und weitere besondere Lootquellen besitzen eigene serverseitige Anpassungen.",
+            rows: []
+          }
+        ]
+      },
+      {
+        id: "lab",
+        kicker: "LABOR",
+        title: "Forschung & Base Enhancements",
+        intro: "Forschungsaufwand, Materialien und Base-Enhancement-Belohnungen wurden umfangreich angepasst.",
+        facts: [],
+        groups: [
+          {
+            title: "Details",
+            text: "Die vollständigen Laborwerte stehen im eigenen Labor-Reiter.",
+            rows: [
+              {
+                label: "Labor-Balance",
+                value: "eigener Reiter",
+                detail: "Dort stehen Arbeitsaufwand, Materialien und alle Base-Enhancement-Belohnungen.",
+                action: { tab: "lab", label: "Labor ansehen" }
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  },
+
+  lab: {
+    summary: [
+      { id: "global", label: "Allgemeine Forschung", value: "Aufwand ×2", detail: "Benötigte Materialien: ×2", group: "global" },
+      { id: "base", label: "Basis-Erweiterungen", value: "Aufwand ×3", detail: "Arbeitsaufwand & Materialien grundsätzlich: ×3", group: "global" },
+      { id: "cooling", label: "Kühlung – normale Forschung", value: "Aufwand ×20", detail: "Normale Kühlungsforschung", group: "special" },
+      { id: "cooling-base", label: "Kühlung – Base Enhancements", value: "Aufwand ×30", detail: "Base Enhancement Lv1–3", group: "special" },
+      { id: "medicine-base", label: "Arzneiherstellung-Basis-Erweiterungen", value: "Aufwand ×2,5", detail: "Arbeitsaufwand & Materialien: ×2,5", group: "special" }
+    ],
+    rewards: [
+      { category: "Handwerk", iconUrl: "https://palpedia.com/img/work-suitabilities/handiwork.png", fallback: "✋", levels: ["+5 % zusätzliche Sphären", "+10 % zusätzliche Munition", "+10 % Handwerk-Arbeitstempo"] },
+      { category: "Anzünden", iconUrl: "https://palpedia.com/img/work-suitabilities/kindling.png", fallback: "🔥", levels: ["+5 % Metall-/Barren-Ertrag", "+5 % Bruttempo", "+10 % Anzünden-Arbeitstempo"] },
+      { category: "Bewässerung", iconUrl: "https://palpedia.com/img/work-suitabilities/watering.png", fallback: "💧", levels: ["+5 % Pflanzenwachstum", "+5 % Paldium-Ertrag", "+10 % Bewässerungs-Arbeitstempo"] },
+      { category: "Aussaat", iconUrl: "https://palpedia.com/img/work-suitabilities/planting.png", fallback: "🌱", levels: ["+5 % Ernteertrag", "+5 % Pflanzenwachstum", "+10 % Aussaat-Arbeitstempo"] },
+      { category: "Stromerzeugung", iconUrl: "https://palpedia.com/img/work-suitabilities/generating-electricity.png", fallback: "⚡", levels: ["+10 % Stromspeicher", "−5 % Stromverbrauch", "+5 % Stromerzeugungs-Arbeitstempo"] },
+      { category: "Holzfällen", iconUrl: "https://palpedia.com/img/work-suitabilities/lumbering.png", fallback: "🪵", levels: ["−2,5 % Expeditionszeit", "+2,5 % Expeditionsbelohnungen", "+10 % Holzfäll-Arbeitstempo"] },
+      { category: "Bergbau", iconUrl: "https://palpedia.com/img/work-suitabilities/mining.png", fallback: "⛏", levels: ["−2,5 % Expeditionszeit", "+20 % Ölförderung", "+10 % Bergbau-Arbeitstempo"] },
+      { category: "Kühlung", iconUrl: "https://palpedia.com/img/work-suitabilities/cooling.png", fallback: "❄", levels: ["−10 % Verderbgeschwindigkeit", "+5 % Bruttempo", "+10 % Kühlungs-Arbeitstempo"] },
+      { category: "Arzneiherstellung", iconUrl: "https://palpedia.com/img/work-suitabilities/medicine-production.png", fallback: "✚", levels: ["20 % weniger Materialverbrauch bei Arzneiherstellung", "+5 % Arzneiherstellungs-Arbeitstempo", "+10 % Arzneiherstellungs-Arbeitstempo"] }
+    ]
+  },
+
+  palLocks: {
+    policySize: 120,
+    rows: [
+      { no: "041", pal: "Azurobe", level: 28, characterId: "BlueDragon" },
+      { no: "091B", pal: "Incineram Noct", level: 28, characterId: "Baphomet_Dark" },
+      { no: "098B", pal: "Rayhound Cryst", level: 28, characterId: "ThunderDog_Ice" },
+      { no: "152", pal: "Verdash", level: 28, characterId: "GrassRabbitMan" },
+      { no: "129", pal: "Reptyro", level: 30, characterId: "VolcanicMonster" },
+      { no: "116", pal: "Sibelyx", level: 30, characterId: "WhiteMoth" },
+      { no: "117", pal: "Maraith", level: 31, characterId: "GhostBeast" },
+      { no: "134B", pal: "Wumpo Botan", level: 31, characterId: "Yeti_Grass" },
+      { no: "114", pal: "Frostplume", level: 32, characterId: "SnowPeafowl" },
+      { no: "120", pal: "Gildra", level: 32, characterId: "MummyPal" },
+      { no: "103B", pal: "Chillet Ignis", level: 33, characterId: "WeaselDragon_Fire" },
+      { no: "126", pal: "Kikit", level: 33, characterId: "SmallArmadillo" },
+      { no: "056B", pal: "Loupmoon Cryst", level: 33, characterId: "Werewolf_Ice" },
+      { no: "037B", pal: "Turtacle Terra", level: 33, characterId: "TentacleTurtle_Ground" },
+      { no: "074B", pal: "Gorirat Terra", level: 35, characterId: "Gorilla_Ground" },
+      { no: "125", pal: "Lullu", level: 35, characterId: "LeafPrincess" },
+      { no: "140", pal: "Sekhmet", level: 35, characterId: "Sekhmet" },
+      { no: "134", pal: "Wumpo", level: 35, characterId: "Yeti" },
+      { no: "124", pal: "Quivern", level: 36, characterId: "SkyDragon" },
+      { no: "122", pal: "Suzaku", level: 36, characterId: "Suzaku" },
+      { no: "132", pal: "Cryolinx", level: 38, characterId: "WhiteTiger" },
+      { no: "119", pal: "Icelyn", level: 38, characterId: "IceWitch" },
+      { no: "087B", pal: "Mammorest Cryst", level: 38, characterId: "GrassMammoth_Ice" },
+      { no: "129B", pal: "Reptyro Cryst", level: 38, characterId: "VolcanicMonster_Ice" },
+      { no: "021B", pal: "Kingpaca Cryst", level: 39, characterId: "KingAlpaca_Ice" },
+      { no: "078B", pal: "Wixen Noct", level: 39, characterId: "FoxMage_Dark" },
+      { no: "141", pal: "Prixter", level: 41, characterId: "ScorpionMan" },
+      { no: "094B", pal: "Relaxaurus Lux", level: 41, characterId: "LazyDragon_Electric" },
+      { no: "142", pal: "Tetroise", level: 41, characterId: "CubeTurtle" },
+      { no: "155", pal: "Dogen", level: 44, characterId: "SifuDog" },
+      { no: "150", pal: "Omascul", level: 44, characterId: "MysteryMask" },
+      { no: "138", pal: "Dualith", level: 45, characterId: "GrassGolem" },
+      { no: "124B", pal: "Quivern Botan", level: 45, characterId: "SkyDragon_Grass" },
+      { no: "135", pal: "Sootseer", level: 45, characterId: "CandleGhost" },
+      { no: "151", pal: "Whalaska", level: 45, characterId: "IceNarwhal" },
+      { no: "041B", pal: "Azurobe Cryst", level: 46, characterId: "BlueDragon_Ice" },
+      { no: "156", pal: "Bulldosu", level: 46, characterId: "SumoDog" },
+      { no: "092B", pal: "Dazzi Noct", level: 46, characterId: "RaijinDaughter_Water" },
+      { no: "148", pal: "Nitemary", level: 46, characterId: "GhostRabbit" },
+      { no: "143", pal: "Nyafia", level: 46, characterId: "BadCatgirl" },
+      { no: "147", pal: "Prunelia", level: 46, characterId: "BlueberryFairy" },
+      { no: "189", pal: "Shadowbeak", level: 46, characterId: "BlackGriffon" },
+      { no: "149", pal: "Smokie", level: 46, characterId: "BlackPuppy" },
+      { no: "113B", pal: "Warsect Terra", level: 46, characterId: "HerculesBeetle_Ground" },
+      { no: "157", pal: "Celesdir", level: 47, characterId: "WhiteDeer" },
+      { no: "139", pal: "Anubis", level: 48, characterId: "Anubis" },
+      { no: "137", pal: "Blazamut", level: 48, characterId: "KingBahamut" },
+      { no: "085B", pal: "Bushi Noct", level: 48, characterId: "Ronin_Dark" },
+      { no: "136", pal: "Carnibora", level: 48, characterId: "VenusFlytrap" },
+      { no: "176", pal: "Dupin", level: 48, characterId: "ClownRabbit" },
+      { no: "080B", pal: "Helzephyr Lux", level: 48, characterId: "HadesBird_Electric" },
+      { no: "121", pal: "Jormuntide", level: 48, characterId: "Umihebi" },
+      { no: "159", pal: "Knocklem", level: 48, characterId: "WingGolem" },
+      { no: "186B", pal: "Lyleen Noct", level: 48, characterId: "LilyQueen_Dark" },
+      { no: "099B", pal: "Menasting Terra", level: 48, characterId: "DarkScorpion_Ground" },
+      { no: "118", pal: "Shroomer", level: 48, characterId: "MushroomDragon" },
+      { no: "118B", pal: "Shroomer Noct", level: 48, characterId: "MushroomDragon_Dark" },
+      { no: "127", pal: "Yakumo", level: 48, characterId: "GuardianDog" },
+      { no: "132B", pal: "Cryolinx Terra", level: 49, characterId: "WhiteTiger_Ground" },
+      { no: "115", pal: "Majex", level: 50, characterId: "DarkFlameFox" },
+      { no: "190", pal: "Selyne", level: 50, characterId: "MoonQueen" },
+      { no: "186", pal: "Lyleen", level: 51, characterId: "LilyQueen" },
+      { no: "153", pal: "Splatterina", level: 52, characterId: "GrimGirl" },
+      { no: "158", pal: "Astegon", level: 53, characterId: "BlackMetalDragon" },
+      { no: "009B", pal: "Croajiro Noct", level: 54, characterId: "KendoFrog_Dark" },
+      { no: "161", pal: "Azurmane", level: 55, characterId: "BlueThunderHorse" },
+      { no: "083B", pal: "Fenglope Lux", level: 55, characterId: "FengyunDeeper_Electric" },
+      { no: "200", pal: "Frostallion", level: 55, characterId: "IceHorse" },
+      { no: "154", pal: "Gildane", level: 55, characterId: "GoldenHorse" },
+      { no: "111B", pal: "Kitsun Noct", level: 55, characterId: "AmaterasuWolf_Dark" },
+      { no: "160", pal: "Silvegis", level: 55, characterId: "WhiteShieldDragon" },
+      { no: "130", pal: "Starryon", level: 55, characterId: "NightBlueHorse" },
+      { no: "172", pal: "Dynamoff", level: 56, characterId: "ThunderFluffyBird" },
+      { no: "165", pal: "Lapiron", level: 56, characterId: "BrownRabbit" },
+      { no: "163", pal: "Snock", level: 56, characterId: "ElecSnail" },
+      { no: "164", pal: "Souffline", level: 56, characterId: "DandelionGirl" },
+      { no: "173", pal: "Tropicaw", level: 56, characterId: "RedFlowerBird" },
+      { no: "162", pal: "Valentail", level: 56, characterId: "LongCat" },
+      { no: "168", pal: "Bakemi", level: 58, characterId: "OniGhostGirl" },
+      { no: "048B", pal: "Gloopie Primo", level: 58, characterId: "OctopusGirl_Neutral" },
+      { no: "166", pal: "Hoodle", level: 58, characterId: "HoodGhost" },
+      { no: "159B", pal: "Knocklem Ignis", level: 58, characterId: "WingGolem_Fire" },
+      { no: "170", pal: "Lapure", level: 58, characterId: "SleeveRabbit" },
+      { no: "167", pal: "Slowatt", level: 58, characterId: "ElecLizard" },
+      { no: "121B", pal: "Jormuntide Ignis", level: 59, characterId: "Umihebi_Fire" },
+      { no: "169", pal: "Solmora", level: 59, characterId: "KingSunfish" },
+      { no: "181", pal: "Wistella", level: 59, characterId: "MoonChild" },
+      { no: "188B", pal: "Faleris Aqua", level: 58, characterId: "Horus_Water" },
+      { no: "200B", pal: "Frostallion Noct", level: 60, characterId: "IceHorse_Dark" },
+      { no: "122B", pal: "Suzaku Aqua", level: 60, characterId: "Suzaku_Water" },
+      { no: "174", pal: "Flaracle", level: 61, characterId: "FoxExorcist" },
+      { no: "131B", pal: "Pierdon Cryst", level: 61, characterId: "RockBeast_Ice" },
+      { no: "138B", pal: "Dualith Noct", level: 63, characterId: "GrassGolem_Dark" },
+      { no: "089B", pal: "Petallia Ignis", level: 64, characterId: "FlowerDoll_Fire" },
+      { no: "171", pal: "Eidrolon", level: 65, characterId: "GhostDragon" },
+      { no: "202", pal: "Jetragon", level: 65, characterId: "JetDragon" },
+      { no: "175", pal: "Ophydia", level: 65, characterId: "LotusDragon" },
+      { no: "142B", pal: "Tetroise Primo", level: 65, characterId: "CubeTurtle_Neutral" },
+      { no: "187", pal: "Orserk", level: 67, characterId: "ThunderDragonMan" },
+      { no: "177", pal: "Roujay", level: 67, characterId: "ThiefBird" },
+      { no: "163B", pal: "Snock Lux", level: 67, characterId: "ElecSnail_Ground" },
+      { no: "130B", pal: "Starryon Primo", level: 67, characterId: "NightBlueHorse_Neutral" },
+      { no: "191", pal: "Bastigor", level: 68, characterId: "SnowTigerBeastman" },
+      { no: "096B", pal: "Beakon Cryst", level: 68, characterId: "ThunderBird_Ice" },
+      { no: "171B", pal: "Eidrolon Ignis", level: 68, characterId: "GhostDragon_Fire" },
+      { no: "081B", pal: "Elgrove Cryst", level: 68, characterId: "GrassMinotaur_Ice" },
+      { no: "180", pal: "Loomen", level: 68, characterId: "LanternButler" },
+      { no: "179", pal: "Mycora", level: 68, characterId: "MushroomLady" },
+      { no: "116B", pal: "Sibelyx Primo", level: 68, characterId: "WhiteMoth_Neutral" },
+      { no: "054B", pal: "Univolt Cryst", level: 68, characterId: "Kirin_Ice" },
+      { no: "178", pal: "Venusa", level: 68, characterId: "SnakeGirl" },
+      { no: "188", pal: "Faleris", level: 69, characterId: "Horus" },
+      { no: "192", pal: "Shaolong", level: 69, characterId: "BlueSkyDragon" },
+      { no: "182", pal: "Solenne", level: 69, characterId: "MonochromeQueen" },
+      { no: "169B", pal: "Solmora Lux", level: 69, characterId: "KingSunfish_Thunder" },
+      { no: "151B", pal: "Whalaska Ignis", level: 70, characterId: "IceNarwhal_Fire" },
+      { no: "105B", pal: "Moldron Cryst", level: 71, characterId: "VolcanoDragon_Ice" },
+      { no: "183", pal: "Renjishi", level: 71, characterId: "KabukiMan" },
+      { no: "184", pal: "Aegidron", level: 72, characterId: "DomeArmorDragon" },
+      { no: "157B", pal: "Celesdir Noct", level: 72, characterId: "WhiteDeer_Dark" }
+    ]
+  },
+
+  elements: [
+    { id: "dark", name: "Schatten", symbol: "☾", strong: ["Neutral"], weak: ["Drache"] },
+    { id: "dragon", name: "Drache", symbol: "◆", strong: ["Schatten"], weak: ["Eis"] },
+    { id: "electric", name: "Elektro", symbol: "⚡", strong: ["Wasser"], weak: ["Erde"] },
+    { id: "fire", name: "Feuer", symbol: "🔥", strong: ["Gras", "Eis"], weak: ["Wasser"] },
+    { id: "grass", name: "Gras", symbol: "🌿", strong: ["Erde"], weak: ["Feuer"] },
+    { id: "ground", name: "Erde", symbol: "⬟", strong: ["Elektro"], weak: ["Gras"] },
+    { id: "ice", name: "Eis", symbol: "❄", strong: ["Drache"], weak: ["Feuer"] },
+    { id: "neutral", name: "Neutral", symbol: "○", strong: [], weak: ["Schatten"] },
+    { id: "water", name: "Wasser", symbol: "💧", strong: ["Feuer"], weak: ["Elektro"] }
+  ],
+
+  knowledge: [
+    { title: "Element-Schaden", text: "Starkes Matchup: ×2 Schaden. Schwaches Matchup: ×0,5. Neutrale Interaktion: ×1." },
+    { title: "Eigenes Element", text: "Verwendet ein Pal einen Skill seines eigenen Elements, erhält der Skill zusätzlich 20 % Schaden." },
+    { title: "Gleiches Element", text: "Elemente widerstehen grundsätzlich ihrem eigenen Element; Neutral bildet eine Ausnahme in der aktuellen Matchup-Tabelle." },
+    { title: "Dual-Element-Pals", text: "Bei Pals mit zwei Elementen werden die relevanten Stärken und Schwächen gemeinsam verrechnet." }
+  ],
+
+  links: [
+    { title: "Fisherman's Pals – Status", domain: "fishermans-pals-status.onrender.com", href: "https://fishermans-pals-status.onrender.com", desc: "Eigene Serverstatus-Seite." },
+    { title: "BattleMetrics", domain: "battlemetrics.com", href: "https://www.battlemetrics.com/servers/palworld/41003080", desc: "Serverprofil und externe Erreichbarkeitsdaten." },
+    { title: "PalDB", domain: "paldb.cc", href: "https://paldb.cc/de/", desc: "Palworld-Datenbank, Items, Pals und Spielwerte." },
+    { title: "PalDB Karte", domain: "paldb.cc/de/Map", href: "https://paldb.cc/de/Map", desc: "Interaktive externe Weltkarte." },
+    { title: "Palworld Wiki", domain: "palworld.wiki.gg", href: "https://palworld.wiki.gg/", desc: "Community-Wiki mit aktuellen Spielmechaniken." },
+    { title: "Palworld News", domain: "news.palworldgame.com", href: "https://news.palworldgame.com/", desc: "Offizielle News und Patch-Hinweise." }
+  ]
+};
