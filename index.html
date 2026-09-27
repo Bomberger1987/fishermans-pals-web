@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#241309" />
+  <title>Fisherman's Pals – Server Guide</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="ambient ambient-a"></div>
+  <div class="ambient ambient-b"></div>
+
+  <main class="app-shell">
+    <section class="content-shell">
+      <header class="topbar glass">
+        <div>
+          <div class="eyebrow">FISHERMAN'S PALS · PALWORLD</div>
+          <h1 id="pageTitle">Server Guide</h1>
+          <p id="pageSubtitle">PvE Hardmode · Langzeitserver</p>
+        </div>
+        <div class="topbar-actions">
+          <span class="status-pill" id="liveState"><span class="dot"></span> Status wird geladen</span>
+          <button class="icon-button mobile-menu" id="mobileMenuBtn" aria-label="Menü öffnen">☰</button>
+        </div>
+      </header>
+
+      <section id="appContent" class="page-content"></section>
+
+      <footer class="footer glass">
+        <span>Fisherman's Pals</span>
+        <span>Stand: 22.09.2026 · V1.2.28 TEST</span>
+      </footer>
+    </section>
+
+    <aside class="sidebar glass" id="sidebar">
+      <div class="brand">
+        <div class="brand-mark"><img src="assets/fishermans-pals-logo.png" alt="Fisherman's Pals Logo" /></div>
+        <div>
+          <strong>Fisherman's Pals</strong>
+          <span>PvE Hardmode · Langzeitserver</span>
+        </div>
+      </div>
+      <nav id="navTabs" class="nav-tabs" aria-label="Hauptnavigation"></nav>
+      <div class="sidebar-bottom">
+        <a class="small-link" href="https://fishermans-pals-status.onrender.com" target="_blank" rel="noreferrer">Serverstatus ↗</a>
+        <span class="tiny">Sind sie zu stark, bist du zu schwach.</span>
+      </div>
+    </aside>
+  </main>
+
+  <script src="data.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
